@@ -14,7 +14,7 @@ set -ex #echo on
 # (https://github.com/flutter/flutter/issues/74936), or to read this from a manifest 
 # provided (https://github.com/flutter/flutter/issues/74934).
 function download_canvaskit() {
-  local canvaskit_url=https://unpkg.com/canvaskit-wasm@0.27.0/bin/
+  local canvaskit_url=https://unpkg.com/canvaskit-wasm@0.28.1/bin/
 
   local flutter_bin=$(which flutter)
   local canvaskit_dart_file=$(dirname $flutter_bin)/cache/flutter_web_sdk/lib/_engine/engine/canvaskit/initialization.dart
@@ -47,8 +47,7 @@ flutter pub get
 flutter build web \
   --pwa-strategy=none \
   --profile \
-  --dart-define=FLUTTER_WEB_USE_EXPERIMENTAL_CANVAS_TEXT=true \
-  --dart-define=FLUTTER_WEB_CANVASKIT_URL=assets/canvaskit/ \
+  --web-renderer=html \
   --no-tree-shake-icons
 
 cp build/web/main.dart.js build/web/main_fallback.dart.js
@@ -56,8 +55,7 @@ cp build/web/main.dart.js build/web/main_fallback.dart.js
 flutter build web \
   --pwa-strategy=none \
   --profile \
-  --dart-define=FLUTTER_WEB_USE_SKIA=true \
-  --dart-define=FLUTTER_WEB_CANVASKIT_URL=assets/canvaskit/ \
+  --web-renderer=html \
   --no-tree-shake-icons
 
 mv build/web ../devtools/build
