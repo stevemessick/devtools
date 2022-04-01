@@ -72,18 +72,16 @@ class _SnapshotScreenBodyState extends State<SnapshotScreenBody> {
       children: [
         Row(
           children: [
-            ExitOfflineButton(
-              onPressed: () {
-                offlineController.exitOfflineMode();
-                reset();
-                // Use Router.neglect to replace the current history entry with
-                // the homepage so that clicking Back will not return here.
-                Router.neglect(
-                  context,
-                  () => routerDelegate.navigateHome(clearScreenParam: true),
-                );
-              },
-            ),
+            ExitOfflineButton(onPressed: () {
+              offlineController.exitOfflineMode();
+              reset();
+              // Use Router.neglect to replace the current history entry with
+              // the homepage so that clicking Back will not return here.
+              Router.neglect(
+                context,
+                () => routerDelegate.navigateHome(clearScreenParam: true),
+              );
+            }),
           ],
         ),
         const SizedBox(height: denseRowSpacing),
@@ -97,8 +95,7 @@ class _SnapshotScreenBodyState extends State<SnapshotScreenBody> {
 
   Widget _buildSnapshotError() {
     return CenteredMessage(
-      'Cannot load snapshot for screen \'${widget.args.screenId}\'',
-    );
+        'Cannot load snapshot for screen \'${widget.args.screenId}\'');
   }
 
   void reset() {

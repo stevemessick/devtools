@@ -6,6 +6,5 @@ import 'drag_and_drop.dart';
 
 DragAndDropManager createDragAndDropManager() {
   throw Exception(
-    'Attempting to create DragAndDrop for unrecognized platform.',
-  );
+      'Attempting to create DragAndDrop for unrecognized platform.');
 }

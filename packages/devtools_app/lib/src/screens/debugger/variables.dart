@@ -144,12 +144,10 @@ Widget displayProvider(
                   if (inspectorService.isDisposed) return;
                   if (isInspectable) {
                     notifications?.push(
-                      'Widget is already the current inspector selection.',
-                    );
+                        'Widget is already the current inspector selection.');
                   } else {
                     notifications?.push(
-                      'Only Elements and RenderObjects can currently be inspected',
-                    );
+                        'Only Elements and RenderObjects can currently be inspected');
                   }
                 }
               }
@@ -300,12 +298,11 @@ class _TextSelectionControlsToolbarState
     final endTextSelectionPoint =
         widget.endpoints.length > 1 ? widget.endpoints[1] : widget.endpoints[0];
     final anchorAbove = Offset(
-      widget.globalEditableRegion.left + widget.selectionMidpoint.dx,
-      widget.globalEditableRegion.top +
-          startTextSelectionPoint.point.dy -
-          widget.textLineHeight -
-          _kToolbarContentDistance,
-    );
+        widget.globalEditableRegion.left + widget.selectionMidpoint.dx,
+        widget.globalEditableRegion.top +
+            startTextSelectionPoint.point.dy -
+            widget.textLineHeight -
+            _kToolbarContentDistance);
     final anchorBelow = Offset(
       widget.globalEditableRegion.left + widget.selectionMidpoint.dx,
       widget.globalEditableRegion.top +
@@ -361,9 +358,7 @@ class _TextSelectionControlsToolbarState
           .map((MapEntry<int, _TextSelectionToolbarItemData> entry) {
         return TextSelectionToolbarTextButton(
           padding: TextSelectionToolbarTextButton.getPadding(
-            entry.key,
-            itemDatas.length,
-          ),
+              entry.key, itemDatas.length),
           onPressed: entry.value.onPressed,
           child: Text(entry.value.label),
         );

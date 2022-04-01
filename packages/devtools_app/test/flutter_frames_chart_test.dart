@@ -25,12 +25,10 @@ void main() {
     WidgetTester tester, {
     required List<FlutterFrame> frames,
   }) async {
-    await tester.pumpWidget(
-      wrapWithControllers(
-        FlutterFramesChart(frames, defaultRefreshRate),
-        performance: PerformanceController(),
-      ),
-    );
+    await tester.pumpWidget(wrapWithControllers(
+      FlutterFramesChart(frames, defaultRefreshRate),
+      performance: PerformanceController(),
+    ));
     await tester.pumpAndSettle();
     expect(find.byType(FlutterFramesChart), findsOneWidget);
   }
@@ -159,10 +157,8 @@ void main() {
           ),
         ),
       );
-      expect(
-        find.byKey(FlutterFramesChartItem.selectedFrameIndicatorKey),
-        findsOneWidget,
-      );
+      expect(find.byKey(FlutterFramesChartItem.selectedFrameIndicatorKey),
+          findsOneWidget);
     });
   });
 }

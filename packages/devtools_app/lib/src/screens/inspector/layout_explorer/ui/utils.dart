@@ -32,13 +32,11 @@ class BorderLayout extends StatelessWidget {
     this.bottom,
     this.bottomHeight,
     this.center,
-  })  : assert(
-          left != null ||
-              top != null ||
-              right != null ||
-              bottom != null ||
-              center != null,
-        ),
+  })  : assert(left != null ||
+            top != null ||
+            right != null ||
+            bottom != null ||
+            center != null),
         super(key: key);
 
   final Widget? center;
@@ -201,17 +199,15 @@ class WidgetVisualizer extends StatelessWidget {
                             Flexible(
                               child: Container(
                                 constraints: BoxConstraints(
-                                  maxWidth: largeTitle
-                                      ? defaultMaxRenderWidth
-                                      : minRenderWidth *
-                                          widgetTitleMaxWidthPercentage,
-                                ),
+                                    maxWidth: largeTitle
+                                        ? defaultMaxRenderWidth
+                                        : minRenderWidth *
+                                            widgetTitleMaxWidthPercentage),
                                 child: Center(
                                   child: Text(
                                     title,
                                     style: TextStyle(
-                                      color: colorScheme.widgetNameColor,
-                                    ),
+                                        color: colorScheme.widgetNameColor),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),

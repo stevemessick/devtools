@@ -31,10 +31,8 @@ void main() {
     await env.setupEnvironment();
     debuggerController = TestDebuggerController();
     eval = EvalOnDartLibrary(
-      'package:flutter_app/src/autocomplete.dart',
-      serviceManager.service!,
-      disableBreakpoints: false,
-    );
+        'package:flutter_app/src/autocomplete.dart', serviceManager.service!,
+        disableBreakpoints: false);
   });
 
   tearDown(() async {
@@ -61,8 +59,7 @@ void main() {
         'returns scoped variables when EditingParts is not a field',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
             await autoCompleteResultsFor(
               EditingParts(
@@ -93,30 +90,27 @@ void main() {
         'returns filtered members when EditingParts is a field ',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
-            await autoCompleteResultsFor(
-              EditingParts(
-                activeWord: 'f',
-                leftSide: 'foo.',
-                rightSide: '',
+              await autoCompleteResultsFor(
+                EditingParts(
+                  activeWord: 'f',
+                  leftSide: 'foo.',
+                  rightSide: '',
+                ),
+                debuggerController,
               ),
-              debuggerController,
-            ),
-            equals(['field1', 'field2', 'func1', 'func2']),
-          );
+              equals(['field1', 'field2', 'func1', 'func2']));
           expect(
-            await autoCompleteResultsFor(
-              EditingParts(
-                activeWord: 'fu',
-                leftSide: 'foo.',
-                rightSide: '',
+              await autoCompleteResultsFor(
+                EditingParts(
+                  activeWord: 'fu',
+                  leftSide: 'foo.',
+                  rightSide: '',
+                ),
+                debuggerController,
               ),
-              debuggerController,
-            ),
-            equals(['func1', 'func2']),
-          );
+              equals(['func1', 'func2']));
         },
         timeout: const Timeout.factor(8),
       );
@@ -125,8 +119,7 @@ void main() {
         'returns filtered members when EditingParts is a class name ',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
             await autoCompleteResultsFor(
               EditingParts(
@@ -162,8 +155,7 @@ void main() {
         'returns privates only from library',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
             collectionEquals(
               await autoCompleteResultsFor(
@@ -190,8 +182,7 @@ void main() {
         'returns exported members from import',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
             await autoCompleteResultsFor(
               EditingParts(
@@ -252,8 +243,7 @@ void main() {
         'returns prefixes of libraries imported',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
             await autoCompleteResultsFor(
               EditingParts(
@@ -289,8 +279,7 @@ void main() {
         'returns no operators for int',
         () async {
           await runMethodAndWaitForPause(
-            'AnotherClass().pauseWithScopedVariablesMethod()',
-          );
+              'AnotherClass().pauseWithScopedVariablesMethod()');
           expect(
             await autoCompleteResultsFor(
               EditingParts(

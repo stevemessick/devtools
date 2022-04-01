@@ -45,8 +45,7 @@ class DevToolsRouteInformationParser
 
   @override
   Future<DevToolsRouteConfiguration> parseRouteInformation(
-    RouteInformation routeInformation,
-  ) {
+      RouteInformation routeInformation) {
     var uri = Uri.parse(routeInformation.location!);
 
     if (_forceVmServiceUri != null) {
@@ -81,8 +80,7 @@ class DevToolsRouteInformationParser
     final params = {...configuration.args};
     params.removeWhere((key, value) => value == null);
     return RouteInformation(
-      location: Uri(path: path, queryParameters: params).toString(),
-    );
+        location: Uri(path: path, queryParameters: params).toString());
   }
 }
 

@@ -27,8 +27,7 @@ final RegExp treeNodePrimaryDescriptionPattern = RegExp(r'^([\w ]+)(.*)$');
 // TODO(jacobr): temporary workaround for missing structure from assertion thrown building
 // widget errors.
 final RegExp assertionThrownBuildingError = RegExp(
-  r'^(The following assertion was thrown building [a-zA-Z]+)(\(.*\))(:)$',
-);
+    r'^(The following assertion was thrown building [a-zA-Z]+)(\(.*\))(:)$');
 
 typedef TreeEventCallback = void Function(InspectorTreeNode node);
 
@@ -299,9 +298,7 @@ class InspectorTreeRow with DataSearchStateMixin {
 
 /// Callback issued every time a node is added to the tree.
 typedef NodeAddedCallback = void Function(
-  InspectorTreeNode node,
-  RemoteDiagnosticsNode diagnosticsNode,
-);
+    InspectorTreeNode node, RemoteDiagnosticsNode diagnosticsNode);
 
 class InspectorTreeConfig {
   InspectorTreeConfig({

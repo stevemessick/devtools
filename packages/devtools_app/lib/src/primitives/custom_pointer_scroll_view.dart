@@ -294,15 +294,13 @@ class CustomPointerScrollable extends StatefulWidget {
     _CustomPointerScrollableState? scrollable =
         CustomPointerScrollable.of(context);
     while (scrollable != null) {
-      futures.add(
-        scrollable.position!.ensureVisible(
-          context.findRenderObject()!,
-          alignment: alignment,
-          duration: duration,
-          curve: curve,
-          alignmentPolicy: alignmentPolicy,
-        ),
-      );
+      futures.add(scrollable.position!.ensureVisible(
+        context.findRenderObject()!,
+        alignment: alignment,
+        duration: duration,
+        curve: curve,
+        alignmentPolicy: alignmentPolicy,
+      ));
       context = scrollable.context;
       scrollable = CustomPointerScrollable.of(context);
     }
@@ -355,10 +353,7 @@ class _CustomPointerScrollableState extends State<CustomPointerScrollable>
     _position =
         controller?.createScrollPosition(_physics!, this, oldPosition) ??
             ScrollPositionWithSingleContext(
-              physics: _physics!,
-              context: this,
-              oldPosition: oldPosition,
-            );
+                physics: _physics!, context: this, oldPosition: oldPosition);
     assert(position != null);
     controller?.attach(position!);
   }
@@ -579,9 +574,8 @@ class _CustomPointerScrollableState extends State<CustomPointerScrollable>
     }
 
     return math.min(
-      math.max(position!.pixels + delta, position!.minScrollExtent),
-      position!.maxScrollExtent,
-    );
+        math.max(position!.pixels + delta, position!.minScrollExtent),
+        position!.maxScrollExtent);
   }
 
   void _receivedPointerSignal(PointerSignalEvent event) {
@@ -661,13 +655,10 @@ class _CustomPointerScrollableState extends State<CustomPointerScrollable>
     // In contrast to scrollable.dart, _configuration.buildScrollbar is not
     // called since scrollbars are added manually where needed.
     return _configuration.buildOverscrollIndicator(
-      context,
-      result,
-      ScrollableDetails(
-        controller: widget.controller!,
-        direction: axisDirection,
-      ),
-    );
+        context,
+        result,
+        ScrollableDetails(
+            controller: widget.controller!, direction: axisDirection));
   }
 
   @override
@@ -740,9 +731,7 @@ class _ScrollSemantics extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-    BuildContext context,
-    _RenderScrollSemantics renderObject,
-  ) {
+      BuildContext context, _RenderScrollSemantics renderObject) {
     renderObject
       ..allowImplicitScrolling = allowImplicitScrolling
       ..position = position
@@ -808,11 +797,8 @@ class _RenderScrollSemantics extends RenderProxyBox {
   SemanticsNode? _innerNode;
 
   @override
-  void assembleSemanticsNode(
-    SemanticsNode node,
-    SemanticsConfiguration config,
-    Iterable<SemanticsNode> children,
-  ) {
+  void assembleSemanticsNode(SemanticsNode node, SemanticsConfiguration config,
+      Iterable<SemanticsNode> children) {
     if (children.isEmpty ||
         !children.first.isTagged(RenderViewport.useTwoPaneSemantics)) {
       super.assembleSemanticsNode(node, config, children);

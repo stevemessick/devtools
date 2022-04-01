@@ -115,12 +115,10 @@ class _ViewVMFlagsButton extends StatelessWidget {
     return DialogTextButton(
       onPressed: () {
         Navigator.of(context, rootNavigator: true).pop('dialog');
-        unawaited(
-          showDialog(
-            context: context,
-            builder: (context) => VMFlagsDialog(),
-          ),
-        );
+        unawaited(showDialog(
+          context: context,
+          builder: (context) => VMFlagsDialog(),
+        ));
       },
       child: Text('View VM Flags'.toUpperCase()),
     );

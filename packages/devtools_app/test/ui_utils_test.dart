@@ -140,13 +140,12 @@ void main() {
       const longest = TextSpan(text: 'this is an even longer line of text');
 
       expect(
-        findLongestTextSpan([
-          shortest,
-          longer,
-          longest,
-        ]),
-        equals(longest),
-      );
+          findLongestTextSpan([
+            shortest,
+            longer,
+            longest,
+          ]),
+          equals(longest));
     });
 
     test('returns first longest if multiple spans have the same length', () {
@@ -155,13 +154,12 @@ void main() {
       const alsoLongest = TextSpan(text: 'this is a ------ line of text');
 
       expect(
-        findLongestTextSpan([
-          shortest,
-          longest,
-          alsoLongest,
-        ]),
-        equals(longest),
-      );
+          findLongestTextSpan([
+            shortest,
+            longest,
+            alsoLongest,
+          ]),
+          equals(longest));
     });
   });
 

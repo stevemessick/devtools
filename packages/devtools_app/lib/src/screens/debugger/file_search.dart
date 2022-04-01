@@ -50,13 +50,9 @@ class FileSearchFieldState extends State<FileSearchField>
     autoCompleteController.setCurrentHoveredIndexValue(0);
 
     addAutoDisposeListener(
-      autoCompleteController.searchNotifier,
-      _handleSearch,
-    );
-    addAutoDisposeListener(
-      autoCompleteController.searchAutoCompleteNotifier,
-      _handleAutoCompleteOverlay,
-    );
+        autoCompleteController.searchNotifier, _handleSearch);
+    addAutoDisposeListener(autoCompleteController.searchAutoCompleteNotifier,
+        _handleAutoCompleteOverlay);
 
     _query = autoCompleteController.search;
 
@@ -184,10 +180,8 @@ class FileQuery {
     final fileName = _fileName(script.uri);
     final fileNameIndex = script.uri.lastIndexOf(fileName);
     final matchedSegments = _findExactSegments(fileName)
-        .map(
-          (range) =>
-              Range(range.begin + fileNameIndex, range.end + fileNameIndex),
-        )
+        .map((range) =>
+            Range(range.begin + fileNameIndex, range.end + fileNameIndex))
         .toList();
     return AutoCompleteMatch(script.uri, matchedSegments: matchedSegments);
   }
@@ -230,10 +224,8 @@ class FileQuery {
       final fileName = _fileName(script.uri);
       final fileNameIndex = script.uri.lastIndexOf(fileName);
       matchedSegments = _findFuzzySegments(fileName, query)
-          .map(
-            (range) =>
-                Range(range.begin + fileNameIndex, range.end + fileNameIndex),
-          )
+          .map((range) =>
+              Range(range.begin + fileNameIndex, range.end + fileNameIndex))
           .toList();
     }
 

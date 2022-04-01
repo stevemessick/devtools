@@ -31,9 +31,6 @@ class AppSizeTestController extends AppSizeController {
       await delay();
     }
     super.loadDiffTreeFromJsonFiles(
-      oldFile: oldFile,
-      newFile: newFile,
-      onError: onError,
-    );
+        oldFile: oldFile, newFile: newFile, onError: onError);
   }
 }

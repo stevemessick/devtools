@@ -337,10 +337,8 @@ class CpuProfileFilterDialog extends StatelessWidget {
   CpuProfileFilterDialog({
     required this.controller,
     Key? key,
-  })  : oldToggleFilterValues = List.generate(
-          controller.toggleFilters.length,
-          (index) => controller.toggleFilters[index].enabled.value,
-        ),
+  })  : oldToggleFilterValues = List.generate(controller.toggleFilters.length,
+            (index) => controller.toggleFilters[index].enabled.value),
         super(key: key);
 
   double get _filterDialogWidth => scaleByFontFactor(400.0);

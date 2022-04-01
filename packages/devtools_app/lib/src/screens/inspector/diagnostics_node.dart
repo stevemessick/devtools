@@ -112,11 +112,7 @@ class RemoteDiagnosticsNode extends DiagnosticableTree {
     final data = json['renderObject'];
     if (data == null) return null;
     _renderObject = RemoteDiagnosticsNode(
-      data as Map<String, Object?>? ?? {},
-      inspectorService,
-      false,
-      null,
-    );
+        data as Map<String, Object?>? ?? {}, inspectorService, false, null);
     return _renderObject;
   }
 
@@ -126,11 +122,7 @@ class RemoteDiagnosticsNode extends DiagnosticableTree {
     final data = json['parentRenderElement'];
     if (data == null) return null;
     _parentRenderElement = RemoteDiagnosticsNode(
-      data as Map<String, Object?>? ?? {},
-      inspectorService,
-      false,
-      null,
-    );
+        data as Map<String, Object?>? ?? {}, inspectorService, false, null);
     return _parentRenderElement;
   }
 
@@ -604,8 +596,7 @@ class RemoteDiagnosticsNode extends DiagnosticableTree {
         final List<Object> jsonArray = json['properties'] as List<Object>;
         for (var element in jsonArray.cast<Map<String, Object>>()) {
           cachedProperties!.add(
-            RemoteDiagnosticsNode(element, inspectorService, true, parent),
-          );
+              RemoteDiagnosticsNode(element, inspectorService, true, parent));
         }
       }
     }
@@ -613,8 +604,7 @@ class RemoteDiagnosticsNode extends DiagnosticableTree {
   }
 
   Future<List<RemoteDiagnosticsNode>> getProperties(
-    ObjectGroupBase objectGroup,
-  ) async {
+      ObjectGroupBase objectGroup) async {
     return await objectGroup.getProperties(dartDiagnosticRef);
   }
 

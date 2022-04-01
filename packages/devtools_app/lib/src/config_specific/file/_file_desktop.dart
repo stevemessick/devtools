@@ -7,6 +7,7 @@ import 'package:file/local.dart';
 import 'package:path/path.dart' as _path;
 
 import '../logger/logger.dart';
+
 import 'file.dart';
 
 FileSystemDesktop createFileSystem() {
@@ -43,11 +44,8 @@ class FileSystemDesktop implements FileIO {
   }
 
   @override
-  void writeStringToFile(
-    String filename,
-    String contents, {
-    bool isMemory = false,
-  }) {
+  void writeStringToFile(String filename, String contents,
+      {bool isMemory = false}) {
     final logFile = _exportDirectory(isMemory: isMemory).childFile(filename);
     logFile.writeAsStringSync(contents, flush: true);
   }

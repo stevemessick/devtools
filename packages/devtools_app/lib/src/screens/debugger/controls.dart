@@ -202,10 +202,8 @@ class ExceptionMode {
   ];
 
   static ExceptionMode from(String id) {
-    return modes.singleWhere(
-      (mode) => mode.id == id,
-      orElse: () => modes.first,
-    );
+    return modes.singleWhere((mode) => mode.id == id,
+        orElse: () => modes.first);
   }
 
   final String id;

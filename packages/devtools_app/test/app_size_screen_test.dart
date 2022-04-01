@@ -58,12 +58,10 @@ void main() {
     WidgetTester tester, {
     AppSizeTestController controller,
   }) async {
-    await tester.pumpWidget(
-      wrapWithControllers(
-        const AppSizeBody(),
-        appSize: controller,
-      ),
-    );
+    await tester.pumpWidget(wrapWithControllers(
+      const AppSizeBody(),
+      appSize: controller,
+    ));
     await tester.pumpAndSettle(const Duration(seconds: 1));
     expect(find.byType(AppSizeBody), findsOneWidget);
   }
@@ -91,12 +89,10 @@ void main() {
     });
 
     testWidgets('builds its tab', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        wrapWithControllers(
-          Builder(builder: screen.buildTab),
-          appSize: appSizeController,
-        ),
-      );
+      await tester.pumpWidget(wrapWithControllers(
+        Builder(builder: screen.buildTab),
+        appSize: appSizeController,
+      ));
       expect(find.text('App Size'), findsOneWidget);
     });
 
@@ -349,20 +345,18 @@ void main() {
       WidgetTester tester, {
       AppSizeTestController controller,
     }) async {
-      await tester.pumpWidget(
-        wrapWithControllers(
-          MaterialApp(
-            builder: (context, child) => Notifications(child: child),
-            home: Builder(
-              builder: (context) {
-                buildContext = context;
-                return const AppSizeBody();
-              },
-            ),
+      await tester.pumpWidget(wrapWithControllers(
+        MaterialApp(
+          builder: (context, child) => Notifications(child: child),
+          home: Builder(
+            builder: (context) {
+              buildContext = context;
+              return const AppSizeBody();
+            },
           ),
-          appSize: controller,
         ),
-      );
+        appSize: controller,
+      ));
       await tester.pumpAndSettle(const Duration(seconds: 1));
       expect(find.byType(AppSizeBody), findsOneWidget);
     }
@@ -466,9 +460,6 @@ class AppSizeTestController extends AppSizeController {
       await delay();
     }
     super.loadDiffTreeFromJsonFiles(
-      oldFile: oldFile,
-      newFile: newFile,
-      onError: onError,
-    );
+        oldFile: oldFile, newFile: newFile, onError: onError);
   }
 }

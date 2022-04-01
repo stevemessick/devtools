@@ -148,18 +148,16 @@ class DevToolsAppState extends State<DevToolsApp> with AutoDisposeMixin {
         page,
         args,
       );
-      assert(
-        () {
-          widget = _AlternateCheckedModeBanner(
-            builder: (context) => pages[page](
-              context,
-              page,
-              args,
-            ),
-          );
-          return true;
-        }(),
-      );
+      assert(() {
+        widget = _AlternateCheckedModeBanner(
+          builder: (context) => pages[page](
+            context,
+            page,
+            args,
+          ),
+        );
+        return true;
+      }());
       return MaterialPage(child: widget);
     }
 
@@ -293,8 +291,7 @@ class DevToolsAppState extends State<DevToolsApp> with AutoDisposeMixin {
   Widget _providedControllers({@required Widget child, bool offline = false}) {
     final _providers = widget.screens
         .where(
-          (s) => s.providesController && (offline ? s.supportsOffline : true),
-        )
+            (s) => s.providesController && (offline ? s.supportsOffline : true))
         .map((s) => s.controllerProvider)
         .toList();
 
@@ -377,10 +374,8 @@ class DevToolsScreen<C> {
   final bool supportsOffline;
 
   Provider<C> get controllerProvider {
-    assert(
-      (createController != null && controller == null) ||
-          (createController == null && controller != null),
-    );
+    assert((createController != null && controller == null) ||
+        (createController == null && controller != null));
     if (controller != null) {
       return Provider<C>.value(value: controller);
     }
@@ -425,12 +420,10 @@ class OpenAboutAction extends StatelessWidget {
       message: 'About DevTools',
       child: InkWell(
         onTap: () async {
-          unawaited(
-            showDialog(
-              context: context,
-              builder: (context) => DevToolsAboutDialog(),
-            ),
-          );
+          unawaited(showDialog(
+            context: context,
+            builder: (context) => DevToolsAboutDialog(),
+          ));
         },
         child: Container(
           width: DevToolsScaffold.actionWidgetSize,
@@ -453,12 +446,10 @@ class OpenSettingsAction extends StatelessWidget {
       message: 'Settings',
       child: InkWell(
         onTap: () async {
-          unawaited(
-            showDialog(
-              context: context,
-              builder: (context) => SettingsDialog(),
-            ),
-          );
+          unawaited(showDialog(
+            context: context,
+            builder: (context) => SettingsDialog(),
+          ));
         },
         child: Container(
           width: DevToolsScaffold.actionWidgetSize,
@@ -486,9 +477,7 @@ class ReportFeedbackButton extends StatelessWidget {
             analytics_constants.feedbackButton,
           );
           await launchUrl(
-            devToolsExtensionPoints.issueTrackerLink().url,
-            context,
-          );
+              devToolsExtensionPoints.issueTrackerLink().url, context);
         },
         child: Container(
           width: DevToolsScaffold.actionWidgetSize,

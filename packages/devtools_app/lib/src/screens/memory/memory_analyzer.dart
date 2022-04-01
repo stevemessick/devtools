@@ -32,9 +32,7 @@ bool _classMatcher(HeapGraphClassLive liveClass) {
 ///   key: 'libraries'    value: List<ClassReference>
 ///
 Map<String, List<Reference>> collect(
-  MemoryController controller,
-  Snapshot snapshot,
-) {
+    MemoryController controller, Snapshot snapshot) {
   final Map<String, List<Reference>> result = {};
 
   if (snapshot.libraryRoot == null) return {};
@@ -58,11 +56,9 @@ Map<String, List<Reference>> collect(
         if (_classMatcher(liveClass)) {
           final instances = liveClass.getInstances(heapGraph);
           externalsToAnalyze.add(external);
-          debugLogger(
-            'Regex external found ${liveClass.name} '
-            'instances=${instances.length} '
-            'allocated bytes=$size',
-          );
+          debugLogger('Regex external found ${liveClass.name} '
+              'instances=${instances.length} '
+              'allocated bytes=$size');
         }
       }
       result['externals'] = externalsToAnalyze;
@@ -75,10 +71,8 @@ Map<String, List<Reference>> collect(
           if (_classMatcher(liveClass)) {
             filtersToAnalyze.add(classRef);
             final instances = liveClass.getInstances(heapGraph);
-            debugLogger(
-              'Regex filtered found ${classRef.name} '
-              'instances=${instances.length}',
-            );
+            debugLogger('Regex filtered found ${classRef.name} '
+                'instances=${instances.length}');
           }
         }
         result['filters'] = filtersToAnalyze;
@@ -91,10 +85,8 @@ Map<String, List<Reference>> collect(
         if (_classMatcher(liveClass)) {
           librariesToAnalyze.add(classRef);
           final instances = liveClass.getInstances(heapGraph);
-          debugLogger(
-            'Regex library found ${classRef.name} '
-            'instances=${instances.length}',
-          );
+          debugLogger('Regex library found ${classRef.name} '
+              'instances=${instances.length}');
         }
       }
       result['libraries'] = librariesToAnalyze;
@@ -191,13 +183,11 @@ void imageAnalysis(
             sizeNote: childExternalSizes,
           );
           bucketSizes.forEach((key, value) {
-            bucketNode.addChild(
-              AnalysisReference(
-                '$key',
-                countNote: value.totalCount,
-                sizeNote: value.totalBytes,
-              ),
-            );
+            bucketNode.addChild(AnalysisReference(
+              '$key',
+              countNote: value.totalCount,
+              sizeNote: value.totalBytes,
+            ));
           });
           objectNode.addChild(bucketNode);
         }

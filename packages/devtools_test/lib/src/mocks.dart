@@ -77,8 +77,7 @@ class FakeServiceManager extends Fake implements ServiceConnectionManager {
     initFlagManager();
 
     when(errorBadgeManager.erroredItemsForPage(any)).thenReturn(
-      FixedValueListenable(LinkedHashMap<String, DevToolsError>()),
-    );
+        FixedValueListenable(LinkedHashMap<String, DevToolsError>()));
 
     when(errorBadgeManager.errorCountNotifier(any))
         .thenReturn(ValueNotifier<int>(0));
@@ -171,12 +170,10 @@ class FakeServiceManager extends Fake implements ServiceConnectionManager {
       FakeServiceExtensionManager();
 
   @override
-  Future<Response> get rasterCacheMetrics => Future.value(
-        Response.parse({
-          'layerBytes': 0,
-          'pictureBytes': 0,
-        }),
-      );
+  Future<Response> get rasterCacheMetrics => Future.value(Response.parse({
+        'layerBytes': 0,
+        'pictureBytes': 0,
+      }));
 
   @override
   ValueListenable<bool> registeredServiceListenable(String name) {
@@ -193,20 +190,18 @@ class FakeServiceManager extends Fake implements ServiceConnectionManager {
 
   @override
   Future<Response> get flutterVersion {
-    return Future.value(
-      Response.parse({
-        'type': 'Success',
-        'frameworkVersion': '2.10.0',
-        'channel': 'unknown',
-        'repositoryUrl': 'unknown source',
-        'frameworkRevision': '74432fa91c8ffbc555ffc2701309e8729380a012',
-        'frameworkCommitDate': '2020-05-14 13:05:34 -0700',
-        'engineRevision': 'ae2222f47e788070c09020311b573542b9706a78',
-        'dartSdkVersion': '2.9.0 (build 2.9.0-8.0.dev d6fed1f624)',
-        'frameworkRevisionShort': '74432fa91c',
-        'engineRevisionShort': 'ae2222f47e',
-      }),
-    );
+    return Future.value(Response.parse({
+      'type': 'Success',
+      'frameworkVersion': '2.10.0',
+      'channel': 'unknown',
+      'repositoryUrl': 'unknown source',
+      'frameworkRevision': '74432fa91c8ffbc555ffc2701309e8729380a012',
+      'frameworkCommitDate': '2020-05-14 13:05:34 -0700',
+      'engineRevision': 'ae2222f47e788070c09020311b573542b9706a78',
+      'dartSdkVersion': '2.9.0 (build 2.9.0-8.0.dev d6fed1f624)',
+      'frameworkRevisionShort': '74432fa91c',
+      'engineRevisionShort': 'ae2222f47e',
+    }));
   }
 
   @override
@@ -430,14 +425,12 @@ class FakeVmService extends Fake implements VmServiceWrapper {
     if (existingFlag != null) {
       existingFlag.valueAsString = value;
     } else {
-      flags.add(
-        Flag.parse({
-          'name': name,
-          'comment': 'Mock Flag',
-          'modified': true,
-          'valueAsString': value,
-        }),
-      );
+      flags.add(Flag.parse({
+        'name': name,
+        'comment': 'Mock Flag',
+        'modified': true,
+        'valueAsString': value,
+      }));
     }
 
     final fakeVmFlagUpdateEvent = Event(
@@ -502,8 +495,7 @@ class FakeVmService extends Fake implements VmServiceWrapper {
       return Future.value(SocketProfilingState(enabled: enabled));
     }
     return Future.value(
-      SocketProfilingState(enabled: socketProfilingEnabledResult),
-    );
+        SocketProfilingState(enabled: socketProfilingEnabledResult));
   }
 
   @override
@@ -578,8 +570,7 @@ class FakeVmService extends Fake implements VmServiceWrapper {
       return Future.value(HttpTimelineLoggingState(enabled: enabled));
     }
     return Future.value(
-      HttpTimelineLoggingState(enabled: httpEnableTimelineLoggingResult),
-    );
+        HttpTimelineLoggingState(enabled: httpEnableTimelineLoggingResult));
   }
 
   @override
@@ -1023,11 +1014,9 @@ void mockFlutterVersion(
   MockConnectedApp connectedApp,
   SemanticVersion version,
 ) {
-  when(connectedApp.flutterVersionNow).thenReturn(
-    FlutterVersion.parse({
-      'frameworkVersion': '$version',
-    }),
-  );
+  when(connectedApp.flutterVersionNow).thenReturn(FlutterVersion.parse({
+    'frameworkVersion': '$version',
+  }));
   when(connectedApp.connectedAppInitialized).thenReturn(true);
 }
 
@@ -1037,9 +1026,7 @@ void mockIsDartVmApp(MockConnectedApp connectedApp, [isDartVmApp = true]) {
 }
 
 // ignore: prefer_single_quotes
-final Grammar mockGrammar = Grammar.fromJson(
-  jsonDecode(
-    '''
+final Grammar mockGrammar = Grammar.fromJson(jsonDecode("""
 {
   "name": "Dart",
   "fileTypes": [
@@ -1049,13 +1036,9 @@ final Grammar mockGrammar = Grammar.fromJson(
   "patterns": [],
   "repository": {}
 }
-''',
-  ),
-);
+"""));
 
-final Script mockScript = Script.parse(
-  jsonDecode(
-    """
+final Script mockScript = Script.parse(jsonDecode("""
 {
   "type": "Script",
   "class": {
@@ -1470,24 +1453,18 @@ final Script mockScript = Script.parse(
     ]
   ]
 }
-""",
-  ),
-);
+"""));
 
 final mockScriptRef = ScriptRef(
-  uri:
-      'libraries/@783137924/scripts/package%3Agallery%2Fmain.dart/17b557e5bc3"',
-  id: 'test-script-long-lines',
-);
+    uri:
+        'libraries/@783137924/scripts/package%3Agallery%2Fmain.dart/17b557e5bc3"',
+    id: 'test-script-long-lines');
 
 final mockParsedScript = ParsedScript(
-  script: mockScript,
-  highlighter: SyntaxHighlighter.withGrammar(
-    grammar: mockGrammar,
-    source: mockScript.source,
-  ),
-  executableLines: <int>{},
-);
+    script: mockScript,
+    highlighter: SyntaxHighlighter.withGrammar(
+        grammar: mockGrammar, source: mockScript.source),
+    executableLines: <int>{});
 
 final mockScriptRefs = [
   ScriptRef(uri: 'zoo:animals/cats/meow.dart', id: 'fake/id/1'),

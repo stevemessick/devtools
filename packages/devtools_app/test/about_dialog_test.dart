@@ -39,10 +39,8 @@ void main() {
     testWidgets('Feedback section', (WidgetTester tester) async {
       await tester.pumpWidget(wrap(aboutDialog));
       expect(find.text('Feedback'), findsOneWidget);
-      expect(
-        findSubstring(aboutDialog, 'github.com/flutter/devtools'),
-        findsOneWidget,
-      );
+      expect(findSubstring(aboutDialog, 'github.com/flutter/devtools'),
+          findsOneWidget);
     });
   });
 }

@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
 
 TextStyle unimportant(ColorScheme colorScheme) => TextStyle(
-      color: colorScheme.isLight ? Colors.grey.shade500 : Colors.grey.shade600,
-    );
+    color: colorScheme.isLight ? Colors.grey.shade500 : Colors.grey.shade600);
 
 final TextStyle regular = TextStyle(
   // The font size when not specified seems to be 14, but specify here since we
@@ -17,9 +16,8 @@ final TextStyle regular = TextStyle(
 );
 
 TextStyle warning(ColorScheme colorScheme) => TextStyle(
-      color:
-          colorScheme.isLight ? Colors.orange.shade900 : Colors.orange.shade400,
-    );
+    color:
+        colorScheme.isLight ? Colors.orange.shade900 : Colors.orange.shade400);
 TextStyle error(ColorScheme colorScheme) => TextStyle(
       color: colorScheme.isLight ? Colors.red.shade500 : Colors.red.shade400,
     );
@@ -33,8 +31,6 @@ const regularBold = TextStyle(
 );
 const regularItalic = TextStyle(fontStyle: FontStyle.italic);
 TextStyle unimportantItalic(ColorScheme colorScheme) =>
-    unimportant(colorScheme).merge(
-      const TextStyle(
-        fontStyle: FontStyle.italic,
-      ),
-    );
+    unimportant(colorScheme).merge(const TextStyle(
+      fontStyle: FontStyle.italic,
+    ));

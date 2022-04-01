@@ -253,8 +253,7 @@ class DominatorTree extends StatelessWidget {
 
   void _expandToSelected() {
     var selected = dominatorTreeRoot!.firstChildWithCondition(
-      (node) => node.callGraphNode.id == selectedNode!.id,
-    );
+        (node) => node.callGraphNode.id == selectedNode!.id);
 
     while (selected != null) {
       selected.expand();
@@ -307,9 +306,7 @@ class DominatorTreeNode extends TreeNode<DominatorTreeNode> {
 
   @override
   DominatorTreeNode shallowCopy() {
-    throw UnimplementedError(
-      'This method is not implemented. Implement if you '
-      'need to call `shallowCopy` on an instance of this class.',
-    );
+    throw UnimplementedError('This method is not implemented. Implement if you '
+        'need to call `shallowCopy` on an instance of this class.');
   }
 }

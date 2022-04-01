@@ -55,11 +55,7 @@ class DevToolsDialog extends StatelessWidget {
         ],
       ),
       contentPadding: const EdgeInsets.fromLTRB(
-        contentPadding,
-        0,
-        contentPadding,
-        contentPadding,
-      ),
+          contentPadding, 0, contentPadding, contentPadding),
       content: content,
       actions: actions,
       buttonPadding: const EdgeInsets.symmetric(horizontal: defaultSpacing),

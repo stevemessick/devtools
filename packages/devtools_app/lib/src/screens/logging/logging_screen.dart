@@ -117,15 +117,13 @@ class _LoggingScreenState extends State<LoggingScreenBody>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _buildLoggingControls(),
-        const SizedBox(height: denseRowSpacing),
-        Expanded(
-          child: _buildLoggingBody(),
-        ),
-      ],
-    );
+    return Column(children: [
+      _buildLoggingControls(),
+      const SizedBox(height: denseRowSpacing),
+      Expanded(
+        child: _buildLoggingBody(),
+      ),
+    ]);
   }
 
   Widget _buildLoggingControls() {

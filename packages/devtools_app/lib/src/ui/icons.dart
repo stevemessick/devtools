@@ -88,9 +88,7 @@ class CircleIcon extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: scaleByFontFactor(9.0),
-          color: const Color(0xFF231F20),
-        ),
+            fontSize: scaleByFontFactor(9.0), color: const Color(0xFF231F20)),
       ),
     );
   }

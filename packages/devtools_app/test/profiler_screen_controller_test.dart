@@ -33,27 +33,18 @@ void main() {
 
     test('disposes', () async {
       controller.dispose();
-      expect(
-        () {
-          controller.recordingNotifier.addListener(() {});
-        },
-        throwsA(anything),
-      );
+      expect(() {
+        controller.recordingNotifier.addListener(() {});
+      }, throwsA(anything));
 
-      expect(
-        () {
-          controller.cpuProfilerController.dataNotifier.addListener(() {});
-        },
-        throwsA(anything),
-      );
+      expect(() {
+        controller.cpuProfilerController.dataNotifier.addListener(() {});
+      }, throwsA(anything));
 
-      expect(
-        () {
-          controller.cpuProfilerController.selectedCpuStackFrameNotifier
-              .addListener(() {});
-        },
-        throwsA(anything),
-      );
+      expect(() {
+        controller.cpuProfilerController.selectedCpuStackFrameNotifier
+            .addListener(() {});
+      }, throwsA(anything));
     });
   });
 }

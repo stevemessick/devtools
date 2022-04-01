@@ -48,8 +48,7 @@ void main() {
     when(fakeServiceManager.connectedApp.isDartWebAppNow).thenReturn(false);
     when(fakeServiceManager.connectedApp.isFlutterAppNow).thenReturn(true);
     when(fakeServiceManager.connectedApp.flutterVersionNow).thenReturn(
-      FlutterVersion.parse((await fakeServiceManager.flutterVersion).json),
-    );
+        FlutterVersion.parse((await fakeServiceManager.flutterVersion).json));
     when(fakeServiceManager.connectedApp.isDartCliAppNow).thenReturn(false);
     when(fakeServiceManager.connectedApp.isDebugFlutterAppNow)
         .thenReturn(false);
@@ -63,13 +62,11 @@ void main() {
     PerformanceController performanceController,
     bool runAsync = false,
   }) async {
-    await tester.pumpWidget(
-      wrapWithControllers(
-        const PerformanceScreenBody(),
-        performance: controller =
-            performanceController ?? PerformanceController(),
-      ),
-    );
+    await tester.pumpWidget(wrapWithControllers(
+      const PerformanceScreenBody(),
+      performance: controller =
+          performanceController ?? PerformanceController(),
+    ));
     await tester.pumpAndSettle();
 
     if (runAsync) {
@@ -92,12 +89,10 @@ void main() {
     });
 
     testWidgets('builds its tab', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        wrapWithControllers(
-          Builder(builder: screen.buildTab),
-          performance: PerformanceController(),
-        ),
-      );
+      await tester.pumpWidget(wrapWithControllers(
+        Builder(builder: screen.buildTab),
+        performance: PerformanceController(),
+      ));
       expect(find.text('Performance'), findsOneWidget);
     });
 
@@ -108,10 +103,8 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(FlutterFramesChart), findsOneWidget);
         expect(find.byType(TimelineFlameChart), findsOneWidget);
-        expect(
-          find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
-          findsNothing,
-        );
+        expect(find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
+            findsNothing);
         expect(find.byType(EventDetails), findsOneWidget);
         expect(find.byIcon(Icons.pause), findsOneWidget);
         expect(find.byIcon(Icons.play_arrow), findsOneWidget);
@@ -139,10 +132,8 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(FlutterFramesChart), findsOneWidget);
         expect(find.byType(TimelineFlameChart), findsNothing);
-        expect(
-          find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
-          findsOneWidget,
-        );
+        expect(find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
+            findsOneWidget);
         expect(find.byType(EventDetails), findsOneWidget);
         expect(find.byIcon(Icons.pause), findsOneWidget);
         expect(find.byIcon(Icons.play_arrow), findsOneWidget);
@@ -171,10 +162,8 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(FlutterFramesChart), findsNothing);
         expect(find.byType(TimelineFlameChart), findsOneWidget);
-        expect(
-          find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
-          findsNothing,
-        );
+        expect(find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
+            findsNothing);
         expect(find.byType(EventDetails), findsOneWidget);
         expect(find.byIcon(Icons.pause), findsOneWidget);
         expect(find.byIcon(Icons.play_arrow), findsOneWidget);
@@ -220,10 +209,8 @@ void main() {
         expect(controller.allTraceEvents, isNotEmpty);
         expect(find.byType(FlutterFramesChart), findsOneWidget);
         expect(find.byType(TimelineFlameChart), findsOneWidget);
-        expect(
-          find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
-          findsNothing,
-        );
+        expect(find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
+            findsNothing);
         expect(find.byType(EventDetails), findsOneWidget);
 
         await tester.tap(find.byIcon(Icons.block));
@@ -231,10 +218,8 @@ void main() {
         expect(controller.allTraceEvents, isEmpty);
         expect(find.byType(FlutterFramesChart), findsOneWidget);
         expect(find.byType(TimelineFlameChart), findsNothing);
-        expect(
-          find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
-          findsOneWidget,
-        );
+        expect(find.byKey(TimelineAnalysisContainer.emptyTimelineKey),
+            findsOneWidget);
         expect(find.byType(EventDetails), findsOneWidget);
       });
     });
@@ -253,8 +238,7 @@ void main() {
         );
         expect(
           find.richTextContaining(
-            'you will need to reproduce activity in your app',
-          ),
+              'you will need to reproduce activity in your app'),
           findsOneWidget,
         );
         expect(find.richTextContaining('Track Widget Builds'), findsOneWidget);
@@ -275,19 +259,14 @@ void main() {
         await tester.pumpAndSettle();
         expect(
           find.richTextContaining(
-            'you will need to reproduce activity in your app',
-          ),
+              'you will need to reproduce activity in your app'),
           findsOneWidget,
         );
         expect(find.richTextContaining('Render Clip layers'), findsOneWidget);
         expect(
-          find.richTextContaining('Render Opacity layers'),
-          findsOneWidget,
-        );
-        expect(
-          find.richTextContaining('Render Physical Shape layers'),
-          findsOneWidget,
-        );
+            find.richTextContaining('Render Opacity layers'), findsOneWidget);
+        expect(find.richTextContaining('Render Physical Shape layers'),
+            findsOneWidget);
         expect(find.byType(MoreInfoLink), findsNWidgets(3));
       });
     });

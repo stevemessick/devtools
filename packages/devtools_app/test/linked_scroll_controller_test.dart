@@ -153,12 +153,9 @@ void main() {
 
       final state =
           tester.state<TestEmptyGroupState>(find.byType(TestEmptyGroup));
-      expect(
-        () {
-          state._controllers.offset;
-        },
-        throwsAssertionError,
-      );
+      expect(() {
+        state._controllers.offset;
+      }, throwsAssertionError);
     });
 
     testWidgets('offset returns current position', (tester) async {
@@ -245,13 +242,11 @@ void main() {
       // The call to `animateTo` needs to be unawaited because the animation is
       // handled by a [DrivenScrollActivity], which only completes when the
       // scroll activity is disposed.
-      unawaited(
-        state._controllers.animateTo(
-          50.0,
-          curve: Curves.easeInOutCubic,
-          duration: const Duration(milliseconds: 200),
-        ),
-      );
+      unawaited(state._controllers.animateTo(
+        50.0,
+        curve: Curves.easeInOutCubic,
+        duration: const Duration(milliseconds: 200),
+      ));
       await tester.pumpAndSettle();
 
       expect(state._controllers.offset, equals(50.0));

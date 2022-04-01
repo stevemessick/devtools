@@ -260,9 +260,7 @@ class _BoxLayoutExplorerWidgetState extends LayoutExplorerWidgetState<
                     axis: Axis.horizontal,
                     size: Size(displayWidths[2], widgetHeight),
                     offset: Offset(
-                      displayWidths[0] + displayWidths[1],
-                      displayHeights[0],
-                    ),
+                        displayWidths[0] + displayWidths[1], displayHeights[0]),
                     realSize: Size(width2, safeParentSize.height),
                     layoutProperties: propertiesLocal,
                     isFreeSpace: true,
@@ -275,10 +273,8 @@ class _BoxLayoutExplorerWidgetState extends LayoutExplorerWidgetState<
                   RenderProperties(
                     axis: Axis.horizontal,
                     size: Size(widgetWidth, displayHeights[2]),
-                    offset: Offset(
-                      displayWidths[0],
-                      displayHeights[0] + displayHeights[1],
-                    ),
+                    offset: Offset(displayWidths[0],
+                        displayHeights[0] + displayHeights[1]),
                     realSize: Size(safeParentSize.width, height2),
                     layoutProperties: propertiesLocal,
                     isFreeSpace: true,

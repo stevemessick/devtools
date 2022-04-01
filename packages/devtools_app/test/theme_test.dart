@@ -19,17 +19,13 @@ void main() {
     test('can be used without override', () {
       theme = themeFor(isDarkTheme: true, ideTheme: IdeTheme());
       expect(theme.brightness, equals(Brightness.dark));
-      expect(
-        theme.scaffoldBackgroundColor,
-        equals(ThemeData.dark().scaffoldBackgroundColor),
-      );
+      expect(theme.scaffoldBackgroundColor,
+          equals(ThemeData.dark().scaffoldBackgroundColor));
 
       theme = themeFor(isDarkTheme: false, ideTheme: IdeTheme());
       expect(theme.brightness, equals(Brightness.light));
-      expect(
-        theme.scaffoldBackgroundColor,
-        equals(ThemeData.light().scaffoldBackgroundColor),
-      );
+      expect(theme.scaffoldBackgroundColor,
+          equals(ThemeData.light().scaffoldBackgroundColor));
     });
 
     test('can be inferred from override background color', () {
@@ -54,20 +50,16 @@ void main() {
         ideTheme: IdeTheme(backgroundColor: Colors.orange),
       );
       expect(theme.brightness, equals(Brightness.light));
-      expect(
-        theme.scaffoldBackgroundColor,
-        equals(ThemeData.light().scaffoldBackgroundColor),
-      );
+      expect(theme.scaffoldBackgroundColor,
+          equals(ThemeData.light().scaffoldBackgroundColor));
 
       theme = themeFor(
         isDarkTheme: true, // Will not be overridden - not light enough
         ideTheme: IdeTheme(backgroundColor: Colors.orange),
       );
       expect(theme.brightness, equals(Brightness.dark));
-      expect(
-        theme.scaffoldBackgroundColor,
-        equals(ThemeData.dark().scaffoldBackgroundColor),
-      );
+      expect(theme.scaffoldBackgroundColor,
+          equals(ThemeData.dark().scaffoldBackgroundColor));
     });
 
     test('custom background will not be used if not dark/light enough', () {
@@ -75,10 +67,8 @@ void main() {
         isDarkTheme: false,
         ideTheme: IdeTheme(backgroundColor: Colors.orange),
       );
-      expect(
-        theme.scaffoldBackgroundColor,
-        equals(ThemeData.light().scaffoldBackgroundColor),
-      );
+      expect(theme.scaffoldBackgroundColor,
+          equals(ThemeData.light().scaffoldBackgroundColor));
     });
   });
 }

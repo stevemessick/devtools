@@ -167,10 +167,8 @@ class ProcessStatisticsWidget extends StatelessWidget {
       title: 'Process',
       rowKeyValues: [
         MapEntry('PID', vm?.pid),
-        MapEntry(
-          'Host CPU',
-          vm == null ? null : '${vm.hostCPU} (${vm.architectureBits}-bits)',
-        ),
+        MapEntry('Host CPU',
+            vm == null ? null : '${vm.hostCPU} (${vm.architectureBits}-bits)'),
         MapEntry('Target CPU', vm?.targetCPU),
         MapEntry('Operating System', vm?.operatingSystem),
         MapEntry(

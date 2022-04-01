@@ -91,12 +91,10 @@ class ConsoleService extends Disposer {
     if (expandAll) {
       variable.expandCascading();
     }
-    _stdio.add(
-      ConsoleLine.dartObjectNode(
-        variable,
-        forceScrollIntoView: forceScrollIntoView,
-      ),
-    );
+    _stdio.add(ConsoleLine.dartObjectNode(
+      variable,
+      forceScrollIntoView: forceScrollIntoView,
+    ));
   }
 
   final _stdio = ListValueNotifier<ConsoleLine>([]);
@@ -194,8 +192,7 @@ class ConsoleService extends Disposer {
     // because this stream does not send event history upon the first
     // subscription like the streams in [ensureServiceInitialized].
     autoDisposeStreamSubscription(
-      service.onDebugEvent.listen(_handleDebugEvent),
-    );
+        service.onDebugEvent.listen(_handleDebugEvent));
     addAutoDisposeListener(serviceManager.isolateManager.mainIsolate, () {
       clearStdio();
     });
@@ -218,18 +215,15 @@ class ConsoleService extends Disposer {
   void ensureServiceInitialized() {
     assert(serviceManager.isServiceAvailable);
     if (!_serviceInitialized && serviceManager.isServiceAvailable) {
-      autoDisposeStreamSubscription(
-        serviceManager.service!.onStdoutEventWithHistory
-            .listen(_handleStdoutEvent),
-      );
-      autoDisposeStreamSubscription(
-        serviceManager.service!.onStderrEventWithHistory
-            .listen(_handleStderrEvent),
-      );
-      autoDisposeStreamSubscription(
-        serviceManager.service!.onExtensionEventWithHistory
-            .listen(_handleExtensionEvent),
-      );
+      autoDisposeStreamSubscription(serviceManager
+          .service!.onStdoutEventWithHistory
+          .listen(_handleStdoutEvent));
+      autoDisposeStreamSubscription(serviceManager
+          .service!.onStderrEventWithHistory
+          .listen(_handleStderrEvent));
+      autoDisposeStreamSubscription(serviceManager
+          .service!.onExtensionEventWithHistory
+          .listen(_handleExtensionEvent));
       _serviceInitialized = true;
     }
   }

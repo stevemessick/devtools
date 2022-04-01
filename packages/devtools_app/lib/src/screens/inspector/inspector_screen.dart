@@ -183,10 +183,9 @@ class InspectorScreenBodyState extends State<InspectorScreenBody>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ValueListenableBuilder<bool>(
-              valueListenable:
-                  serviceManager.serviceExtensionManager.hasServiceExtension(
-                extensions.toggleSelectWidgetMode.extension,
-              ),
+              valueListenable: serviceManager.serviceExtensionManager
+                  .hasServiceExtension(
+                      extensions.toggleSelectWidgetMode.extension),
               builder: (_, selectModeSupported, __) {
                 return ServiceExtensionButtonGroup(
                   extensions: [
@@ -241,10 +240,9 @@ class InspectorScreenBodyState extends State<InspectorScreenBody>
                       .erroredItemsForPage(InspectorScreen.id),
                   builder:
                       (_, LinkedHashMap<String, DevToolsError> errors, __) {
-                    final inspectableErrors = errors.map(
-                      (key, value) =>
-                          MapEntry(key, value as InspectableWidgetError),
-                    ) as LinkedHashMap<String, InspectableWidgetError>;
+                    final inspectableErrors = errors.map((key, value) =>
+                            MapEntry(key, value as InspectableWidgetError))
+                        as LinkedHashMap<String, InspectableWidgetError>;
                     return Stack(
                       children: [
                         InspectorTree(

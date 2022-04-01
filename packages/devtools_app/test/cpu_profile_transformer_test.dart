@@ -53,12 +53,9 @@ void main() {
 
     test('dispose', () {
       cpuProfileTransformer.dispose();
-      expect(
-        () {
-          cpuProfileTransformer.progressNotifier.addListener(() {});
-        },
-        throwsA(anything),
-      );
+      expect(() {
+        cpuProfileTransformer.progressNotifier.addListener(() {});
+      }, throwsA(anything));
     });
   });
 

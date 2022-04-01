@@ -68,9 +68,8 @@ class DragAndDropManagerWeb extends DragAndDropManager {
     final droppedFile = files.first;
     if (droppedFile.type != 'application/json') {
       activeState!.notifications.push(
-        '${droppedFile.type} is not a supported file type. Please import '
-        'a .json file that was exported from Dart DevTools.',
-      );
+          '${droppedFile.type} is not a supported file type. Please import '
+          'a .json file that was exported from Dart DevTools.');
       return;
     }
 

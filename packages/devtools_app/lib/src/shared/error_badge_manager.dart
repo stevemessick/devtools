@@ -32,8 +32,7 @@ class ErrorBadgeManager extends DisposableController
   final _activeErrors =
       <String, ValueNotifier<LinkedHashMap<String, DevToolsError>>>{
     InspectorScreen.id: ValueNotifier<LinkedHashMap<String, DevToolsError>>(
-      LinkedHashMap<String, DevToolsError>(),
-    ),
+        LinkedHashMap<String, DevToolsError>()),
   };
 
   void vmServiceOpened(VmServiceWrapper service) {
@@ -46,13 +45,11 @@ class ErrorBadgeManager extends DisposableController
 
     // Log Flutter extension events.
     autoDisposeStreamSubscription(
-      service.onExtensionEventWithHistory.listen(_handleExtensionEvent),
-    );
+        service.onExtensionEventWithHistory.listen(_handleExtensionEvent));
 
     // Log stderr events.
     autoDisposeStreamSubscription(
-      service.onStderrEventWithHistory.listen(_handleStdErr),
-    );
+        service.onStderrEventWithHistory.listen(_handleStdErr));
   }
 
   void _handleExtensionEvent(Event e) async {
@@ -126,12 +123,10 @@ class ErrorBadgeManager extends DisposableController
   }
 
   ValueListenable<LinkedHashMap<String, DevToolsError>> erroredItemsForPage(
-    String screenId,
-  ) {
+      String screenId) {
     return _activeErrors[screenId] ??
         FixedValueListenable<LinkedHashMap<String, DevToolsError>>(
-          LinkedHashMap<String, DevToolsError>(),
-        );
+            LinkedHashMap<String, DevToolsError>());
   }
 
   ValueNotifier<int>? _errorCountNotifier(String screenId) {

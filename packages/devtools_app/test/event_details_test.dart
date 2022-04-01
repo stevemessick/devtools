@@ -31,12 +31,10 @@ void main() {
       WidgetTester tester,
     ) async {
       eventDetails = EventDetails(selectedEvent);
-      await tester.pumpWidget(
-        wrapWithControllers(
-          eventDetails,
-          performance: PerformanceController(),
-        ),
-      );
+      await tester.pumpWidget(wrapWithControllers(
+        eventDetails,
+        performance: PerformanceController(),
+      ));
       expect(find.byType(EventDetails), findsOneWidget);
     }
 

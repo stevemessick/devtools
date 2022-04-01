@@ -24,11 +24,9 @@ String mainAxisAssetImageUrl(Axis direction, MainAxisAlignment alignment) {
 class AnimatedFlexLayoutProperties
     extends AnimatedLayoutProperties<FlexLayoutProperties>
     implements FlexLayoutProperties {
-  AnimatedFlexLayoutProperties(
-    FlexLayoutProperties begin,
-    FlexLayoutProperties end,
-    Animation<double> animation,
-  ) : super(begin, end, animation);
+  AnimatedFlexLayoutProperties(FlexLayoutProperties begin,
+      FlexLayoutProperties end, Animation<double> animation)
+      : super(begin, end, animation);
 
   @override
   CrossAxisAlignment? get crossAxisAlignment => end.crossAxisAlignment;

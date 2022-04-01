@@ -116,10 +116,8 @@ HeapGraph convertHeapGraph(
   final Map<LibraryClass, int> builtInClasses = {};
 
   if (classNamesToMonitor != null && classNamesToMonitor.isNotEmpty) {
-    print(
-      'WARNING: Remove classNamesToMonitor before PR submission. '
-      '$classNamesToMonitor',
-    );
+    print('WARNING: Remove classNamesToMonitor before PR submission. '
+        '$classNamesToMonitor');
   }
 
   // Construct all the classes in the snapshot.

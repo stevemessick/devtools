@@ -50,13 +50,11 @@ void main() {
     testWidgetsWithWindowSize(
         'shows ProviderUnknownErrorBanner if the devtool failed to fetch the list of providers',
         windowSize, (tester) async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider.overrideWithValue(
-            const AsyncValue.loading(),
-          ),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider.overrideWithValue(
+          const AsyncValue.loading(),
+        ),
+      ]);
       addTearDown(container.dispose);
 
       await tester.pumpWidget(
@@ -84,13 +82,11 @@ void main() {
 
   group('selectedProviderIdProvider', () {
     test('selects the first provider available', () async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider.overrideWithValue(
-            const AsyncValue.loading(),
-          ),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider.overrideWithValue(
+          const AsyncValue.loading(),
+        ),
+      ]);
       addTearDown(container.dispose);
 
       final sub = container.listen(selectedProviderIdProvider);
@@ -112,13 +108,11 @@ void main() {
     });
 
     test('selects the first provider available after an error', () async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider.overrideWithValue(
-            AsyncValue.error(Error()),
-          ),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider.overrideWithValue(
+          AsyncValue.error(Error()),
+        ),
+      ]);
       addTearDown(container.dispose);
 
       final sub = container.listen(selectedProviderIdProvider);
@@ -146,15 +140,13 @@ void main() {
     test(
         'When the currently selected provider is removed, selects the next first provider',
         () async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider.overrideWithValue(
-            const AsyncValue.data([
-              ProviderNode(id: '0', type: 'Provider<A>'),
-            ]),
-          ),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider.overrideWithValue(
+          const AsyncValue.data([
+            ProviderNode(id: '0', type: 'Provider<A>'),
+          ]),
+        ),
+      ]);
       addTearDown(container.dispose);
 
       final sub = container.listen(selectedProviderIdProvider);
@@ -177,15 +169,13 @@ void main() {
     });
 
     test('Once a provider is selected, further updates are no-op', () async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider.overrideWithValue(
-            const AsyncValue.data([
-              ProviderNode(id: '0', type: 'Provider<A>'),
-            ]),
-          ),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider.overrideWithValue(
+          const AsyncValue.data([
+            ProviderNode(id: '0', type: 'Provider<A>'),
+          ]),
+        ),
+      ]);
       addTearDown(container.dispose);
 
       final sub = container.listen(selectedProviderIdProvider);
@@ -213,15 +203,13 @@ void main() {
         'when the list of providers becomes empty, the current provider is unselected '
         ', then, the first provider will be selected when the list becomes non-empty again.',
         () async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider.overrideWithValue(
-            const AsyncValue.data([
-              ProviderNode(id: '0', type: 'Provider<A>'),
-            ]),
-          ),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider.overrideWithValue(
+          const AsyncValue.data([
+            ProviderNode(id: '0', type: 'Provider<A>'),
+          ]),
+        ),
+      ]);
       addTearDown(container.dispose);
 
       final sub = container.listen(selectedProviderIdProvider);
@@ -258,28 +246,24 @@ void main() {
     List<Override> getOverrides() {
       return [
         rawInstanceProvider(const InstancePath.fromProviderId('0'))
-            .overrideWithValue(
-          AsyncValue.data(
-            InstanceDetails.string(
-              'Value0',
-              instanceRefId: 'string/0',
-              setter: null,
-            ),
+            .overrideWithValue(AsyncValue.data(
+          InstanceDetails.string(
+            'Value0',
+            instanceRefId: 'string/0',
+            setter: null,
           ),
-        )
+        ))
       ];
     }
 
     testWidgetsWithWindowSize(
         'selects the first provider the first time a provider is received',
         windowSize, (tester) async {
-      final container = ProviderContainer(
-        overrides: [
-          rawSortedProviderNodesProvider
-              .overrideWithValue(const AsyncValue.loading()),
-          ...getOverrides(),
-        ],
-      );
+      final container = ProviderContainer(overrides: [
+        rawSortedProviderNodesProvider
+            .overrideWithValue(const AsyncValue.loading()),
+        ...getOverrides(),
+      ]);
 
       await tester.pumpWidget(
         UncontrolledProviderScope(
@@ -296,8 +280,7 @@ void main() {
       await expectLater(
         find.byType(ProviderScreenBody),
         matchesGoldenFile(
-          '../goldens/provider_screen/no_selected_provider.png',
-        ),
+            '../goldens/provider_screen/no_selected_provider.png'),
       );
 
       container.updateOverrides([
@@ -382,8 +365,7 @@ void main() {
       await expectLater(
         find.byType(ProviderScreenBody),
         matchesGoldenFile(
-          '../goldens/provider_screen/selected_provider_error_banner.png',
-        ),
+            '../goldens/provider_screen/selected_provider_error_banner.png'),
       );
     });
   });

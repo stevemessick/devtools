@@ -16,12 +16,10 @@ void main() {
       WidgetTester tester,
       ExtentDelegateListView listView,
     ) async {
-      await tester.pumpWidget(
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: listView,
-        ),
-      );
+      await tester.pumpWidget(Directionality(
+        textDirection: TextDirection.ltr,
+        child: listView,
+      ));
     }
 
     testWidgets('builds successfully', (tester) async {
